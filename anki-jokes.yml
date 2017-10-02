@@ -28,7 +28,7 @@ paths:
       - "Jokes"
       summary: "Return a random joke, hopefully a good one!"
       description: "Get a random Joke and let's hope it is a good one!"
-      operationId: "getaJoke"
+      operationId: "getRandomJoke"
       produces:
       - "application/json"
       responses:
@@ -37,19 +37,19 @@ paths:
           schema:
             $ref: "#/definitions/Joke"
             
-  /jokes/{id}/translate:
+  /jokes/{id}:
     get:
       tags:
       - "Jokes"
-      summary: "Return selected joke, in a specific language!"
-      description: "Get a random Joke and let's hope it is a good one!"
-      operationId: "translateaJoke"
+      summary: "Return a selected good joke, optionally translated."
+      description: "Get a selected Joke in your preferred language!"
+      operationId: "getaJoke"
       produces:
       - "application/json"
       parameters:
       - name: "id"
         in: "path"
-        description: "Id of the Joke to be translated and shared."
+        description: "Id of the Joke."
         required: true
         type: "string"
       - name: "language"
@@ -59,11 +59,9 @@ paths:
         type: "string"                
       responses:
         200:
-          description: "Random Joke"
+          description: "Selected and optionally translated Joke"
           schema:
             $ref: "#/definitions/Joke"            
-            
-  /jokes/{id}:
     post:
       tags:
       - "Jokes"

@@ -12,10 +12,6 @@ module.exports = {
     "API_GW_PORT": process.env.API_GW_PORT || "NA",
     "API_GW_USERNAME": process.env.API_GW_USERNAME || "NA",
     "API_GW_PASSWORD": process.env.API_GW_PASSWORD || "NA",
-    "MONGODB_SERVER": process.env.MONGODB_SERVER || "localhost",    
-    "MONGODB_PORT": process.env.MONGODB_PORT || "27017",
-    "MONGODB_USERNAME": process.env.MONGODB_USERNAME || "NA",
-    "MONGODB_PASSWORD": process.env.MONGODB_PASSWORD || "NA",
 
     "JOKES_SERVER": process.env.JOKES_SERVER || "icanhazdadjoke.com",    
     "JOKES_PORT": process.env.JOKES_PORT || "443",

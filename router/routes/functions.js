@@ -83,7 +83,7 @@ exports.translateJoke = function (jk, lang, callback) {
 	translate(jk.joke, {
 		from: 'en',
 		to: lang
-	}).then(res => {
+	}).then(function(res){
 
 		var transJoke = res.text;
 		console.log("Translated joke is [" + transJoke + "]");
@@ -92,16 +92,16 @@ exports.translateJoke = function (jk, lang, callback) {
 		jk.joke = transJoke;
 
 		// Executing callback:
-		callback(jk);
+		callback(null, jk);
 
 		// More info: https://www.npmjs.com/package/google-translate-api
 		// For full list of supported languages: https://github.com/matheuss/google-translate-api/blob/master/languages.js
 
-	}).catch(err => {
-		console.error("Oopss, something went wrong while attempting to translate. Error was [" + err + "]");
+	}).catch(function(err){
+		console.error("Oops, something went wrong while attempting to translate. Error was [" + err + "]");
 
 		// Callback with original joke:
-		callback(jk);
+		callback(err, jk);
 	});
 }
 
@@ -135,18 +135,20 @@ function sendRequest(host, port, path, method, body, secured, callback) {
 
 				try{
 					var result = JSON.parse(chunk);
-				}catch(error){
-
-					console.log("An unexpected error just occured [" + error + "] - Please verify input and try again");
+				}catch(err){
+					console.log("An unexpected error just occured [" + err + "] - Please verify input and try again");
+					callback(err);
+					return;
 				}
 				// Executing callback function:
-				callback(result);
+				callback(null, result);
 			});
 		});
 
 		post_req.on('error', function (e) {
 			console.log('There was a problem with request: ' + e.message);
-			return undefined;
+			callback(e);
+			return;
 		});
 
 		post_req.write(body);
@@ -155,6 +157,7 @@ function sendRequest(host, port, path, method, body, secured, callback) {
 	} catch (error) {
 
 		console.log("An unexpected error just occured [" + error + "] - Please verify input and try again");
+		callback(err);
 	}
 
 }

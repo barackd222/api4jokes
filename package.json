@@ -1,7 +1,7 @@
 {
-  "name": "ankimedrec-swaggerui",
+  "name": "jokes-api-demo",
   "version": "1.0.0",
-  "description": "Anki-Medrec Swagger UI",
+  "description": "Jokes Demo for APIs made Easy",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -9,17 +9,14 @@
   "keywords": [
     "swagger",
     "api",
-    "anki",
-    "medrec"
+    "jokes"
   ],
   "author": "Carlos Rodriguez Iturria",
   "license": "MIT",
   "engines" : { "node" : ">=4.1.0 <5.5.0" },
   "dependencies": {
     "body-parser": "^1.6.5",
-    "express": "^4.8.5",    
-    "mongodb": "^2.2.24",
-    "monk": "^4.0.0",
+    "express": "^4.8.5",
     "js-yaml": "^3.8.4",
     "google-translate-api": "*"
   }
