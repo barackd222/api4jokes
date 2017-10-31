@@ -23,7 +23,7 @@ if ((config.MONGODB_USERNAME != null && config.MONGODB_PASSWORD != null &&
 }
 
 
-var db = monk(MONGODB_CREDENTIALS + config.MONGODB_SERVER + ':' + config.MONGODB_PORT + '/jokes');
+var db = monk(MONGODB_CREDENTIALS + config.MONGODB_SERVER + ':' + config.MONGODB_PORT + '/api4jokes');
 
 // Converting YAML into JSON for Swagger UI loading purposes:
 var inputfile = 'anki-jokes.yml',
